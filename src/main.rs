@@ -19,7 +19,7 @@ struct Potion<'e> {
 }
 
 impl<'e> Potion<'e> {
-    pub fn new<F>(mix: [&'e Ingredient<F>; 5]) -> Potion<'e>
+    pub fn from<F>(mix: [&'e Ingredient<F>; 5]) -> Potion<'e>
     where
         F: FnMut(&mut Potion),
     {
@@ -32,6 +32,13 @@ impl<'e> Potion<'e> {
             value += 1;
         });
 
+        Potion { value, tags, title }
+    }
+
+    pub fn new<F>(value: i32, tags: [&'e Effect; 5], title: String) -> Potion<'e>
+    where
+        F: FnMut(&mut Potion),
+    {
         Potion { value, tags, title }
     }
 }
