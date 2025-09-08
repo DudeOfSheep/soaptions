@@ -1,5 +1,5 @@
-mod items {
-    enum Effect {
+pub mod items {
+    pub enum Effect {
         Rejuvenating(i8),
         Toxic(i8),
         Luck(i8),
@@ -9,7 +9,7 @@ mod items {
         Bland,
     }
 
-    struct Ingredient<'a, F: FnMut(&mut Potion)> {
+    pub struct Ingredient<'a, F: FnMut(&mut Potion)> {
         effect: Effect,
         alter: F,
         title: &'a str,
@@ -39,7 +39,7 @@ mod items {
         }
     }
 
-    struct Potion<'e> {
+    pub struct Potion<'e> {
         value: i32,
         tags: [&'e Effect; 5],
         title: String,
